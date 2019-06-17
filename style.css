@@ -5,6 +5,7 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -15,8 +16,8 @@ canvas {
     /* display: block;
     margin: auto; */
     border: 1px solid black;
-    max-width: 95vh;
-    max-height: calc(100vh - 120px);
+    max-width: 95vw;
+    max-height: calc(100vh - 300px);
     /* calc() allows authors to constrain content width to a certain range */
 }
 
@@ -25,4 +26,13 @@ h1 {
     height: 50px;
     line-height: 50px;
     margin: 25px;
+}
+
+.digits {
+    text-align: center;
+}
+
+.digits button {
+    height: 40px;
+    width: 60px;
 }
