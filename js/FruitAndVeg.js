@@ -11,8 +11,8 @@ class FruitAndVeg {
     draw(ctx) {
       ctx.save(); // Save the current context state
   
-    ctx.fillStyle = "green";
-    ctx.lineWidth = 5;
+    ctx.fillStyle = "rgb(128, 226, 108, 0.5)";
+    ctx.lineWidth = 1;
   
       // Draw the circle
         ctx.beginPath();
@@ -27,7 +27,7 @@ class FruitAndVeg {
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(this.item, this.x, this.y + 3);
-  
+      
       ctx.restore(); // Restore the context state from the begining
     }
     update() {
