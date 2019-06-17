@@ -11,6 +11,7 @@ const GRAVITY = 1;
 const BOUNCING_SPEED = -25;
 const FRUIT_AND_VEG_SPEED = 2;
 const FRAMES_BETWEEN_FRUIT_AND_VEG = 120;
+const DEBUG = false;
 
 // Global variables
 let frame = 0; // The frame counter
@@ -81,7 +82,7 @@ function checkCollision(player, fruitAndVeg) {
 
 function removeUselessFruitAndVegs() {
   fruitAndVegs = fruitAndVegs.filter(fruitAndVeg => {
-    return fruitAndVeg.y - fruitAndVeg.radius - 20 < CANVAS_HEIGHT;
+    return fruitAndVeg.x - fruitAndVeg.radius - 20 < CANVAS_WIDTH;
   });
 }
 
