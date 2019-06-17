@@ -1,8 +1,15 @@
 const arrayFruitsAndVegs = [
-    {name: "apple", missingPlu: "200"},
-    {name: "banana", missingPlu: "210"},
-    {name: "strawberry", missingPlu: "220"},
-    {name: "zucchini", missingPlu: "300"},
-    {name: "tomato", missingPlu: "310"},
-    {name: "salad", missingPlu: "320"}
+    {name: "apple", emoji: "🍎", missingPlu: "200"},
+    {name: "banana", emoji: "🍌", missingPlu: "210"},
+    {name: "carrot", emoji: "🥕", missingPlu: "300"},
+    {name: "broccoli", emoji: "🥦", missingPlu: "310"},
 ];
+
+// arrayFruitsAndVegs[0] => {name: "apple", missingPlu: "200"}
+// arrayFruitsAndVegs[0].name => "apple"
+
+
+function randomFruitAndVeg (array) {
+    let randomIndex = Math.floor(Math.random()* arrayFruitsAndVegs.length)
+    return array[randomIndex]
+}
