@@ -7,11 +7,10 @@ const ctx = canvas.getContext("2d");
 // Constants
 const CANVAS_WIDTH = canvas.width;
 const CANVAS_HEIGHT = canvas.height;
-const GRAVITY = 1;
+const GRAVITY = 1; // !!! once removed from other files, cancel this const also here
 const BOUNCING_SPEED = -25;
 const FRUIT_AND_VEG_SPEED = 2;
 const FRAMES_BETWEEN_FRUIT_AND_VEG = 120;
-const DEBUG = false;
 
 // Global variables
 let frame = 0; // The frame counter
