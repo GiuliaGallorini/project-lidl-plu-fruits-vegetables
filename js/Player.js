@@ -17,13 +17,12 @@ class Player {
     ctx.lineWidth = 3;
 
     // Draw the rectangle with typedNumber
-    ctx.fillRect(this.x, this.y, this.w, this.h);
-    ctx.font = "80px Arial";
-    ctx.fillStyle = "rgb(74, 176, 48)";
+    ctx.fillRect(this.x, this.y, this.w, this.h); // original rectangle
+    ctx.font = "80px Courier";
+    ctx.fillStyle = "#0f0"; // green - #00FF00 - rgb(0, 255, 0)
     ctx.fillText(this.typedNumber, this.x + 80, this.y + 80);
-
     ctx.fillStyle = "black";
-    ctx.font = "40px Arial";
+    ctx.font = "40px Courier";
     ctx.fillText("Score: " + player.score, CANVAS_WIDTH - 220, 550);
 
     ctx.restore();
