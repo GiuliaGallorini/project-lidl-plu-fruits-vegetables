@@ -57,21 +57,19 @@ function updateEverything() {
     fruitAndVegs[i].update();
 
     if (checkCollision(fruitAndVegs[i])) {
-      player.score --;
+      player.score--; // The score decrease -1
       fruitAndVegs.splice(i, 1);
     }
 
-
+    // // I DO NOT NEED A COLLISION LIKE THIS!!!
     // if (checkCollision(player, fruitAndVegs[i])) {
     //   player.score += fruitAndVegs[i].score;
     //   fruitAndVegs.splice(i, 1);
     // }
 
     function checkCollision(fruitAndVegs) {
-      if ( fruitAndVegs.x === 0 )
-      return true
-  }
-
+      if (fruitAndVegs.x === 0) return true;
+    }
   }
 
   removeUselessFruitAndVegs();
@@ -81,7 +79,7 @@ function removeFruitAndVegsWithPlu(typedNumber) {
   for (let i = fruitAndVegs.length - 1; i >= 0; i--) {
     if (fruitAndVegs[i].item.missingPlu === typedNumber) {
       fruitAndVegs.splice(i, 1);
-      player.score += 2 ;
+      player.score += 2; // The score increase +2
     }
   }
 }
@@ -121,12 +119,32 @@ window.onkeydown = e => {
   }
 };
 
-// Listen for button events
+// Listen for button events (cd. INPUT MASK)
 document.querySelectorAll(".digits button").forEach($button => {
   $button.onclick = () => {
-    let content = $button.innerHTML
-    console.log(content)
-    // TODO: remove the next line and write the code so it works also for "Back" and "Enter"
-    player.typedNumber += content 
+    let content = $button.innerHTML;
+    console.log(content);
+    // // TODO: remove the next line and write the code so it works also for "Back" and "Enter"
+    if (content === "Enter") {
+      removeFruitAndVegsWithPlu(player.typedNumber);
+      player.typedNumber = "";
+    } else if (content === "Back") {
+      player.typedNumber = player.typedNumber.substr( 0, player.typedNumber.length - 1);
+    } else {
+      player.typedNumber += content;
+    }
   }
 })
+
+// document.getElementsByClassName("btn-enter").replaceWith( removeFruitAndVegsWithPlu(player.typedNumber))
+// player.typedNumber = "";
+
+// ACCESSING THE DOM OBJECT
+// let $button = document.querySelectorAll(".digits button")
+
+// .querySelectorAll - give me an array
+
+// the .forEach method iterates through all the elements of an array, and FOR EACH element in the array, it will call another function, passing in it each element, one by one.
+
+// ONCLICK EVENT
+// Execute a JS function when a button is clicked, the onclick event occurs when the user clicks on an element
