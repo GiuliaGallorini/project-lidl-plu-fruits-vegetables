@@ -2,7 +2,9 @@ const arrayFruitsAndVegs = [
   { name: "apple", emoji: "🍎", missingPlu: "200", image: createImage("images/apple.png") },
   { name: "banana", emoji: "🍌", missingPlu: "210", image: createImage("images/banana.png") },
   { name: "carrot", emoji: "🥕", missingPlu: "300" },
-  { name: "broccoli", emoji: "🥦", missingPlu: "310" }
+  { name: "broccoli", emoji: "🥦", missingPlu: "310" },
+  { name: "???", emoji: "?", missingPlu: "000" },
+  { name: "???", emoji: "?", missingPlu: "000" },
 ];
 
 function createImage(src) {
@@ -15,6 +17,6 @@ function createImage(src) {
 // arrayFruitsAndVegs[0].name => "apple"
 
 function randomFruitAndVeg(array) {
-  let randomIndex = Math.floor(Math.random() * arrayFruitsAndVegs.length);
+  let randomIndex = Math.floor(Math.random() * nbOfItems);
   return array[randomIndex];
 }

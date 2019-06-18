@@ -3,9 +3,8 @@ class FruitAndVeg {
     this.radius = 40;
     this.x = CANVAS_WIDTH + this.radius;
 
-    let possibleYs = [50, 250, 450]
+    let possibleYs = [150, 250, 350]
     this.y = possibleYs[Math.floor(possibleYs.length * Math.random())]
-    this.vx = FRUIT_AND_VEG_SPEED; // Velocity x
     this.score = 0;
     this.item = randomFruitAndVeg(arrayFruitsAndVegs);
   }
@@ -34,6 +33,6 @@ class FruitAndVeg {
     ctx.restore(); // Restore the context state from the begining
   }
   update() {
-    this.x -= this.vx;
+    this.x -= speed;
   }
 }
