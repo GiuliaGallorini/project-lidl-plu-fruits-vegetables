@@ -13,13 +13,13 @@ class Player {
   draw(ctx) {
     ctx.save();
 
-    ctx.fillStyle = "rgb(10, 30, 104, 0.7)";
+    ctx.fillStyle = "rgb(19, 64, 108)";
     ctx.lineWidth = 3;
 
     // Draw the rectangle with typedNumber
     ctx.fillRect(this.x, this.y, this.w, this.h);
     ctx.font = "80px Arial";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "rgb(74, 176, 48)";
     ctx.fillText(this.typedNumber, this.x + 80, this.y + 80);
 
     ctx.fillStyle = "black";

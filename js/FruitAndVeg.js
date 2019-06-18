@@ -12,8 +12,8 @@ class FruitAndVeg {
   draw(ctx) {
     ctx.save(); // Save the current context state
 
-    ctx.fillStyle = "rgb(128, 226, 108, 0.5)";
-    ctx.lineWidth = 1;
+    ctx.fillStyle = "rgb(128, 226, 108, 0.1)"; // circle should disappear!!!
+    // ctx.lineWidth = 1;
 
     // Draw the circle
     ctx.beginPath();
@@ -21,15 +21,14 @@ class FruitAndVeg {
     ctx.stroke();
     ctx.fill();
 
-    // Draw the text
+    // Draw the text and image
     ctx.fillStyle = "black";
     ctx.font = this.radius + "px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(this.item.emoji, this.x, this.y + 3);
-
-    // TODO: use drawImage()
-
+    ctx.drawImage(this.item.image, this.x - 50, this.y -80, 150, 150);
+    // ctx.fillText(this.item.emoji, this.x, this.y + 3); // Text disabled in order to display the image
+    
     ctx.restore(); // Restore the context state from the begining
   }
   update() {

@@ -4,9 +4,6 @@ const $nbOfItems = document.querySelector(".nbOfItems")
 const $speed = document.querySelector(".speed")
 const ctx = $canvas.getContext("2d");
 
-// // To test if the files are connected
-// ctx.fillRect(500, 300, 50, 50);
-
 // Constants
 const CANVAS_WIDTH = $canvas.width;
 const CANVAS_HEIGHT = $canvas.height;
@@ -96,19 +93,11 @@ function updateEverything() {
         player.score--; // The score decrease -1
         fruitAndVegs.splice(i, 1);
       }
-
-      // // I DO NOT NEED A COLLISION LIKE THIS!!!
-      // if (checkCollision(player, fruitAndVegs[i])) {
-      //   player.score += fruitAndVegs[i].score;
-      //   fruitAndVegs.splice(i, 1);
-      // }
-
       function checkCollision(fruitAndVegs) {
         if (fruitAndVegs.x === 0) return true;
       }
     }
   }
-
   removeUselessFruitAndVegs();
 }
 
@@ -121,17 +110,6 @@ function removeFruitAndVegsWithPlu(typedNumber) {
   }
 }
 
-// // I DO NOT NEED A FUNCTION DISTANCE!!!
-// function distance(a, b) {
-//   return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
-// }
-
-// // I DO NOT NEED A COLLISION LIKE THIS!!!
-// // Return true when player and fruitAndVeg are colliding
-// function checkCollision(player, fruitAndVeg) {
-//   return distance(player, fruitAndVeg) < player.radius + fruitAndVeg.radius;
-// }
-
 function removeUselessFruitAndVegs() {
   // TODO: change the code to decrease the score when an element is destroyed
   fruitAndVegs = fruitAndVegs.filter(fruitAndVeg => {
@@ -141,16 +119,16 @@ function removeUselessFruitAndVegs() {
 
 function changeLevel(level) {
   if (level === 1) {
-    nbOfItems = 1
+    nbOfItems = 2
     speed = 2
   }
   else if (level === 2) {
     nbOfItems = 4
-    speed = 5
+    speed = 3
   }
   else {
     nbOfItems = 6
-    speed = 6
+    speed = 4
   }
 
   $nbOfItems.innerText = nbOfItems
@@ -180,7 +158,6 @@ document.querySelectorAll(".digits button").forEach($button => {
   $button.onclick = () => {
     let content = $button.innerHTML;
     console.log(content);
-    // TODO: remove the next line and write the code so it works also for "Back" and "Enter" => OK
     if (content === "Enter") {
       removeFruitAndVegsWithPlu(player.typedNumber);
       player.typedNumber = "";
@@ -208,13 +185,3 @@ $selectLevel.onchange = () => {
   changeLevel(Number($selectLevel.value))
 }
 
-
-// ACCESSING THE DOM OBJECT
-// let $button = document.querySelectorAll(".digits button")
-
-// .querySelectorAll - give me an array
-
-// the .forEach method iterates through all the elements of an array, and FOR EACH element in the array, it will call another function, passing in it each element, one by one.
-
-// ONCLICK EVENT
-// Execute a JS function when a button is clicked, the onclick event occurs when the user clicks on an element
