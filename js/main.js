@@ -55,10 +55,23 @@ function updateEverything() {
   // Update all fruitAndVegs and check for collision
   for (let i = fruitAndVegs.length - 1; i >= 0; i--) {
     fruitAndVegs[i].update();
-    if (checkCollision(player, fruitAndVegs[i])) {
-      player.score += fruitAndVegs[i].score;
+
+    if (checkCollision(fruitAndVegs[i])) {
+      player.score --;
       fruitAndVegs.splice(i, 1);
     }
+
+
+    // if (checkCollision(player, fruitAndVegs[i])) {
+    //   player.score += fruitAndVegs[i].score;
+    //   fruitAndVegs.splice(i, 1);
+    // }
+
+    function checkCollision(fruitAndVegs) {
+      if ( fruitAndVegs.x === 0 )
+      return true
+  }
+
   }
 
   removeUselessFruitAndVegs();
@@ -68,19 +81,21 @@ function removeFruitAndVegsWithPlu(typedNumber) {
   for (let i = fruitAndVegs.length - 1; i >= 0; i--) {
     if (fruitAndVegs[i].item.missingPlu === typedNumber) {
       fruitAndVegs.splice(i, 1);
-      player.score++;
+      player.score += 2 ;
     }
   }
 }
 
-function distance(a, b) {
-  return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
-}
+// // I DO NOT NEED A FUNCTION DISTANCE!!!
+// function distance(a, b) {
+//   return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+// }
 
-// Return true when player and fruitAndVeg are colliding
-function checkCollision(player, fruitAndVeg) {
-  return distance(player, fruitAndVeg) < player.radius + fruitAndVeg.radius;
-}
+// // I DO NOT NEED A COLLISION LIKE THIS!!!
+// // Return true when player and fruitAndVeg are colliding
+// function checkCollision(player, fruitAndVeg) {
+//   return distance(player, fruitAndVeg) < player.radius + fruitAndVeg.radius;
+// }
 
 function removeUselessFruitAndVegs() {
   // TODO: change the code to decrease the score when an element is destroyed
