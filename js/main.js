@@ -8,6 +8,7 @@ const ctx = $canvas.getContext("2d");
 const CANVAS_WIDTH = $canvas.width;
 const CANVAS_HEIGHT = $canvas.height;
 const FRAMES_BETWEEN_FRUIT_AND_VEG = 180;
+const DEBUG = false;
 
 // Global variables
 let frame = 0; // The frame counter

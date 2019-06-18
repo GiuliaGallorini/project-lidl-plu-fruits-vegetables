@@ -19,23 +19,33 @@ class Player {
     // ctx.fillRect(this.x, this.y, this.w, this.h); // original rectangle
     
     // Draw bigger rounded rectangle
-    ctx.strokeStyle = "rgba(0, 0, 102)"; // dark blue border line
-    ctx.fillStyle = "rgba(0, 0, 102)"; // dark blue border
+    ctx.strokeStyle = "#465362"; // dark grey border line
+    ctx.fillStyle = "#465362"; // dark grey border
     roundRect(ctx, this.x, this.y-20, this.w+20, this.h+20, 20, true);
     // Draw smaller rounded rectangle
-    ctx.strokeStyle = "rgb(0, 51, 153)"; // dark blue display line
-    ctx.fillStyle = "rgba(0, 51, 153)"; // dark blue display
+    ctx.strokeStyle = "#011936"; // dark blue display line
+    ctx.fillStyle = "#011936"; // dark blue display
     roundRect(ctx, this.x+10, this.y-10, this.w, this.h, 20, true);
     
     // Text typed by Player
     ctx.font = "80px Courier";
-    ctx.fillStyle = "#0f0"; // green - #00FF00 - rgb(0, 255, 0)
+    ctx.fillStyle = "#C2EABD"; // tea green
     ctx.fillText(this.typedNumber, this.x + 80, this.y + 65);
 
+    // Score
+    // Draw bigger rounded rectangle
+    ctx.strokeStyle = "#ED254E"; // red border line
+    ctx.fillStyle = "#ED254E"; // red border
+    roundRect(ctx, 680, 480, 320, 120, 20, true);
+    // Draw smaller rounded rectangle
+    ctx.strokeStyle = "#F9DC5C"; // yellow display line
+    ctx.fillStyle = "#F9DC5C"; // yellow display
+    roundRect(ctx, 690, 490, 300, 100, 20, true);
+
     // Text score
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "#ED254E";
     ctx.font = "40px Courier";
-    ctx.fillText("Score: " + player.score, CANVAS_WIDTH - 220, 550);
+    ctx.fillText("SCORE: " + player.score, CANVAS_WIDTH - 260, 550);
 
     ctx.restore();
   }

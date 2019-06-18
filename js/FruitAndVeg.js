@@ -16,10 +16,12 @@ class FruitAndVeg {
     // ctx.lineWidth = 1;
 
     // Draw the circle
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fill();
+    if (DEBUG) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+    }
 
     // Draw the text and image
     ctx.fillStyle = "black";
