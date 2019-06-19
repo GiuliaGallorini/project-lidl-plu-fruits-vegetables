@@ -4,6 +4,8 @@ class Background {
   }
   draw(ctx) {
     ctx.save();
+    ctx.fillStyle = "rgb(241, 157, 169, 0.2)"; // color of the background of the canvas
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     ctx.fillStyle = "rgb(40, 55, 71)";
     ctx.fillRect(0, 100, CANVAS_WIDTH, 100);
     ctx.fillStyle = "rgb(46, 64, 83)";

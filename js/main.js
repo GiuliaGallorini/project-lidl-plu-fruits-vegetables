@@ -59,36 +59,46 @@ function drawEverything(ctx) {
 
 function drawHome(ctx) {
   ctx.save();
-  ctx.fillStyle = "rgb(229, 213, 202, 0.5)"; // color of the background of the canvas HEX #e5d5ca
+  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "#1b1727"; // color of the written
+  ctx.fillStyle = "#fefafa"; // color of the written
   ctx.textAlign = "center";
-  ctx.font = "50px Arial";
-  ctx.fillText("Game!", CANVAS_WIDTH / 2, 200);
-  ctx.fillText("Click to start", CANVAS_WIDTH / 2, 300);
+  ctx.font = "80px Permanent Marker";
+  ctx.fillText("PLU FRUITS & VEGS", CANVAS_WIDTH / 2, 250);
+  ctx.font = "50px Permanent Marker";
+  ctx.fillText("< Click to start >", CANVAS_WIDTH / 2, 400);
   ctx.restore();
 }
 
 function drawInstructions(ctx) {
   ctx.save();
-  ctx.fillStyle = "rgb(229, 213, 202, 0.1)"; // color of the background of the canvas
+  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "#1b1727"; // color of the written
+  ctx.fillStyle = "#fefafa"; // color of the written
   ctx.textAlign = "center";
-  ctx.font = "50px Arial";
-  ctx.fillText("Instructions", CANVAS_WIDTH / 2, 200);
-  ctx.fillText("Click to play", CANVAS_WIDTH / 2, 300);
+  ctx.font = "80px Permanent Marker";
+  ctx.fillText("Instructions", CANVAS_WIDTH / 2, 100);
+  ctx.font = "30px Roboto";
+  ctx.fillText("Lorem ipsum dolor sit amet consectetur adipisicing elit", CANVAS_WIDTH/2, 200, 900);
+  ctx.fillText("Ratione, expedita ad doloremque esse itaque", CANVAS_WIDTH/2, 250, 900);
+  ctx.fillText("reiciendis illum enim saepe commodi,", CANVAS_WIDTH/2, 300, 900);
+  ctx.fillText("similique totam quidem eos unde modi.", CANVAS_WIDTH/2, 350, 900);
+  ctx.fillText("Ut ad itaque totam veniam.", CANVAS_WIDTH/2, 400, 900);
+  ctx.font = "40px Permanent Marker";
+  ctx.fillText("< Click to play >", CANVAS_WIDTH/2, 550, 900);
   ctx.restore();
 }
 
 function drawGameOver(ctx) {
   ctx.save();
+  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#fefafa";
   ctx.textAlign = "center";
-  ctx.font = "50px Arial";
-  ctx.fillText("Game over!", CANVAS_WIDTH / 2, 200);
-  ctx.fillText("Click to restart", CANVAS_WIDTH / 2, 300);
+  ctx.font = "100px Permanent Marker";
+  ctx.fillText("Game over!", CANVAS_WIDTH / 2, 300);
+  ctx.font = "50px Permanent Marker";
+  ctx.fillText("< Click to restart >", CANVAS_WIDTH / 2, 500);
   ctx.restore();
 }
 
@@ -109,14 +119,22 @@ function drawInfo() {
 
 function drawYouWon() {
   ctx.save();
+  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   ctx.fillStyle = "white";
   ctx.textAlign = "center";
-  ctx.font = "50px Arial";
+  ctx.font = "80px Permanent Marker";
   ctx.fillText("You won!", CANVAS_WIDTH / 2, 150);
-  ctx.fillText(`Your score is ${player.score}`, CANVAS_WIDTH / 2, 250);
-  ctx.fillText(`You asked for help only ${showInfoCounter} times`, CANVAS_WIDTH / 2, 350);
-  ctx.fillText("Click to play again", CANVAS_WIDTH / 2, 450);
+  ctx.font = "50px Roboto";
+  ctx.fillText(`Your score is ${player.score}.`, CANVAS_WIDTH / 2, 250);
+  // if showInfoCounter > 1  
+  ctx.fillText(`You asked for help ${showInfoCounter} times.`, CANVAS_WIDTH / 2, 350);
+  // if showInfoCounter === 0 
+  // ctx.fillText(`You never asked for help!!!`, CANVAS_WIDTH / 2, 350);
+  // if showInfoCounter === 1
+  // ctx.fillText(`You asked for help only once!`, CANVAS_WIDTH / 2, 350);
+  ctx.font = "50px Permanent Marker";
+  ctx.fillText("< Click to play again >", CANVAS_WIDTH / 2, 450);
   ctx.restore();
 }
 
@@ -124,6 +142,7 @@ function drawYouWon() {
 // It shouldn't draw on the canvas
 function updateEverything() {
   if (page === "play") {
+    
     frame++;
 
     bg.update();
@@ -146,10 +165,10 @@ function updateEverything() {
     }
   }
   if (player.score <= -5) {
-    page = "game-over";
+    page = "game-over"; // To define WHEN YOU LOSE
   }
   if (player.score >= 6) {
-    page = "you-won";
+    page = "you-won"; // To define WHEN YOU WIN
   }
 }
 

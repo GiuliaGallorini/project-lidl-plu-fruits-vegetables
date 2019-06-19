@@ -38,14 +38,14 @@ class Player {
     ctx.fillStyle = "#ED254E"; // red border
     roundRect(ctx, 680, 480, 320, 120, 20, true);
     // Draw smaller rounded rectangle
-    ctx.strokeStyle = "#F9DC5C"; // yellow display line
-    ctx.fillStyle = "#F9DC5C"; // yellow display
+    ctx.strokeStyle = "rgb(241, 157, 169, 0.9)"; // rosa display line
+    ctx.fillStyle = "rgb(255, 255, 255, 0.9)"; // yellow display
     roundRect(ctx, 690, 490, 300, 100, 20, true);
 
     // Text score
     ctx.fillStyle = "#ED254E";
     ctx.font = "40px Courier";
-    ctx.fillText("SCORE: " + player.score, CANVAS_WIDTH - 260, 550);
+    ctx.fillText("SCORE  " + player.score, CANVAS_WIDTH - 260, 550);
 
     ctx.restore();
   }

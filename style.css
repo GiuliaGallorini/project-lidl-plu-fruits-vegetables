@@ -17,18 +17,20 @@ body {
 canvas {
     /* display: block;
     margin: auto; */
-    border: 1px solid rgb(229, 213, 202, 0.1); /* Border of the canvas */
+    border: 1px solid rgb(241, 157, 169, 0.2); /* Border of the canvas */
     max-width: 95vw;
     max-height: calc(100vh - 350px);
     /* calc() allows authors to constrain content width to a certain range */
 }
 
 h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 50px;
     text-align: center;
     height: 50px;
     line-height: 50px;
     margin: 25px;
-    color: #1b1727; /* Color of the main written */
+    color: #185222; /* Color of the main written */
 }
 
 .digits {
@@ -38,18 +40,23 @@ h1 {
 .digits button {
     height: 40px;
     width: 60px;
-    color: #1b1727; /* Color of the input mask */
+    color: #185222; /* Color of the input mask */
+    font-family: Roboto;
+    font-size: 15px;
 }
 
 .digits button.show-info {
-    width: 100%;
+    width: 190px;
 }
 
 .level-control {
-    color: #1b1727; /* Color of the level control */
+    color: #185222; /* Color of the level control */
+    font-family: Roboto;
+    font-size: 15px;
 }
 
 .value {
-    color: #47657b; /* Color of the level's value DOES NOT WORK */
-
+    color: #185222; /* Color of the level's value DOES NOT WORK */
+    font-family: Roboto;
+    font-size: 15px;
 }
