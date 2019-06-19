@@ -48,13 +48,12 @@ function drawEverything(ctx) {
     for (let i = 0; i < fruitAndVegs.length; i++) {
       fruitAndVegs[i].draw(ctx);
     }
-
-    // if (showInfo) {
-    //   drawInfo();
-    // }
   }
   if (page === "game-over") {
     drawGameOver(ctx);
+  }
+  if (page === "you-won") {
+    drawYouWon(ctx);
   }
 }
 
@@ -105,7 +104,19 @@ function drawInfo() {
   ctx.textAlign = "left";
   ctx.fillText("Apple = 200", 50, 200);
   ctx.fillText("Banana = 210", 50, 250);
+  ctx.restore();
+}
 
+function drawYouWon() {
+  ctx.save();
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.font = "50px Arial";
+  ctx.fillText("You won!", CANVAS_WIDTH / 2, 150);
+  ctx.fillText(`Your score is ${player.score}`, CANVAS_WIDTH / 2, 250);
+  ctx.fillText(`You asked for help only ${showInfoCounter} times`, CANVAS_WIDTH / 2, 350);
+  ctx.fillText("Click to play again", CANVAS_WIDTH / 2, 450);
   ctx.restore();
 }
 
@@ -134,9 +145,11 @@ function updateEverything() {
       }
     }
   }
-
   if (player.score <= -5) {
     page = "game-over";
+  }
+  if (player.score >= 6) {
+    page = "you-won";
   }
 }
 
@@ -237,6 +250,8 @@ $canvas.onclick = () => {
   } else if (page === "instructions") {
     startGame();
   } else if (page === "game-over") {
+    startGame();
+  } else if (page === "you-won") {
     startGame();
   }
 };
