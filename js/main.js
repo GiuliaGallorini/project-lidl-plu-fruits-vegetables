@@ -8,7 +8,7 @@ const ctx = $canvas.getContext("2d");
 const CANVAS_WIDTH = $canvas.width;
 const CANVAS_HEIGHT = $canvas.height;
 const FRAMES_BETWEEN_FRUIT_AND_VEG = 180;
-const DEBUG = false;
+const DEBUG = true;
 
 // Global variables
 let frame = 0; // The frame counter
@@ -47,12 +47,16 @@ function drawEverything(ctx) {
       fruitAndVegs[i].draw(ctx);
     }
   }
+  if (page === "game-over") {
+    drawGameOver(ctx);
+  }
 }
 
 function drawHome(ctx) {
   ctx.save();
+  ctx.fillStyle = "rgb(229, 213, 202, 0.1)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#1b1727"; // color of the written
   ctx.textAlign = "center";
   ctx.font = "50px Arial";
   ctx.fillText("Game!", CANVAS_WIDTH / 2, 200);
@@ -62,12 +66,24 @@ function drawHome(ctx) {
 
 function drawInstructions(ctx) {
   ctx.save();
+  ctx.fillStyle = "rgb(229, 213, 202, 0.1)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#1b1727"; // color of the written
   ctx.textAlign = "center";
   ctx.font = "50px Arial";
   ctx.fillText("Instructions", CANVAS_WIDTH / 2, 200);
   ctx.fillText("Click to play", CANVAS_WIDTH / 2, 300);
+  ctx.restore();
+}
+
+function drawGameOver(ctx) {
+  ctx.save();
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.font = "50px Arial";
+  ctx.fillText("Game over!", CANVAS_WIDTH / 2, 200);
+  ctx.fillText("Click to restart", CANVAS_WIDTH / 2, 300);
   ctx.restore();
 }
 
@@ -177,6 +193,12 @@ $canvas.onclick = () => {
     page = "instructions";
   }
   else if (page === "instructions") {
+    page = "play";
+  }
+  else if (player.score === -10) {
+    page = "game-over";
+  }
+  else if (page === "game-over") {
     page = "play";
   }
 };

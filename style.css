@@ -10,12 +10,14 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0; 
+    background-image: url("./images/home-fruits-and-veg.jpg");
+    background-size: cover;
 }
 
 canvas {
     /* display: block;
     margin: auto; */
-    border: 1px solid black;
+    border: 1px solid rgb(229, 213, 202, 0.1); /* Border of the canvas */
     max-width: 95vw;
     max-height: calc(100vh - 300px);
     /* calc() allows authors to constrain content width to a certain range */
@@ -26,6 +28,7 @@ h1 {
     height: 50px;
     line-height: 50px;
     margin: 25px;
+    color: #1b1727; /* Color of the main written */
 }
 
 .digits {
@@ -35,4 +38,14 @@ h1 {
 .digits button {
     height: 40px;
     width: 60px;
+    color: #1b1727; /* Color of the input mask */
+}
+
+.level-control {
+    color: #1b1727; /* Color of the level control */
+}
+
+.value {
+    color: #47657b; /* Color of the level's value DOES NOT WORK */
+
 }
