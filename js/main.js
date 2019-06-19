@@ -16,8 +16,8 @@ let player = new Player();
 let fruitAndVegs = [];
 let bg = new Background();
 let page = "home"; // Possible values: "home", "play", "instructions", "game-over"
-let nbOfItems = 4
-let speed = 5
+let nbOfItems = 4 // could it be zero?
+let speed = 5 // could it be zero?
 
 function animation() {
   updateEverything();
@@ -112,7 +112,6 @@ function removeFruitAndVegsWithPlu(typedNumber) {
 }
 
 function removeUselessFruitAndVegs() {
-  // TODO: change the code to decrease the score when an element is destroyed
   fruitAndVegs = fruitAndVegs.filter(fruitAndVeg => {
     return fruitAndVeg.x + fruitAndVeg.radius > 0;
   });
