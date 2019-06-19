@@ -1,6 +1,6 @@
 class FruitAndVeg {
   constructor() {
-    this.radius = 40;
+    this.radius = 70;
     this.x = CANVAS_WIDTH + this.radius;
 
     let possibleYs = [150, 250, 350]
@@ -28,9 +28,22 @@ class FruitAndVeg {
     ctx.font = this.radius + "px Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.drawImage(this.item.image, this.x - 50, this.y -80, 150, 150);
+    ctx.drawImage(this.item.image, this.x - this.radius, this.y -this.radius, 2*this.radius, 2*this.radius);
     // ctx.fillText(this.item.emoji, this.x, this.y + 3); // Text disabled in order to display the image
     
+    // When we have the value showInfo, draw the PLU 
+    if (showInfo) {
+      ctx.fillStyle = "black"
+      ctx.globalAlpha = 0.4
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
+      ctx.globalAlpha = 1
+      ctx.fillStyle = "white"
+      ctx.fillText(this.item.missingPlu, this.x, this.y + 3)
+    }
+
     ctx.restore(); // Restore the context state from the begining
   }
   update() {

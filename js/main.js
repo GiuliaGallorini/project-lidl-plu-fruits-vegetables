@@ -1,14 +1,14 @@
 const $canvas = document.querySelector("canvas");
-const $selectLevel = document.querySelector("select[name=level]")
-const $nbOfItems = document.querySelector(".nbOfItems")
-const $speed = document.querySelector(".speed")
+const $selectLevel = document.querySelector("select[name=level]");
+const $nbOfItems = document.querySelector(".nbOfItems");
+const $speed = document.querySelector(".speed");
 const ctx = $canvas.getContext("2d");
 
 // Constants
 const CANVAS_WIDTH = $canvas.width;
 const CANVAS_HEIGHT = $canvas.height;
 const FRAMES_BETWEEN_FRUIT_AND_VEG = 180;
-const DEBUG = true;
+const DEBUG = false;
 
 // Global variables
 let frame = 0; // The frame counter
@@ -16,8 +16,10 @@ let player = new Player();
 let fruitAndVegs = [];
 let bg = new Background();
 let page = "home"; // Possible values: "home", "play", "instructions", "game-over"
-let nbOfItems = 4 // could it be zero?
-let speed = 5 // could it be zero?
+let showInfo = false;
+let showInfoCounter = 0;
+let nbOfItems; // could it be zero?
+let speed; // could it be zero?
 
 function animation() {
   updateEverything();
@@ -46,6 +48,10 @@ function drawEverything(ctx) {
     for (let i = 0; i < fruitAndVegs.length; i++) {
       fruitAndVegs[i].draw(ctx);
     }
+
+    // if (showInfo) {
+    //   drawInfo();
+    // }
   }
   if (page === "game-over") {
     drawGameOver(ctx);
@@ -87,6 +93,22 @@ function drawGameOver(ctx) {
   ctx.restore();
 }
 
+function drawInfo() {
+  ctx.save();
+  ctx.globalAlpha = 0.8;
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.font = "50px Arial";
+  ctx.fillText("Informations", CANVAS_WIDTH / 2, 100);
+  ctx.textAlign = "left";
+  ctx.fillText("Apple = 200", 50, 200);
+  ctx.fillText("Banana = 210", 50, 250);
+
+  ctx.restore();
+}
+
 // updateEverything update variables
 // It shouldn't draw on the canvas
 function updateEverything() {
@@ -110,12 +132,16 @@ function updateEverything() {
         player.score--; // The score decrease -1
         fruitAndVegs.splice(i, 1);
       }
-      function checkCollision(fruitAndVegs) {
-        if (fruitAndVegs.x === 0) return true;
-      }
     }
   }
-  removeUselessFruitAndVegs();
+
+  if (player.score <= -5) {
+    page = "game-over";
+  }
+}
+
+function checkCollision(fruitAndVegs) {
+  return fruitAndVegs.x + fruitAndVegs.radius < 0;
 }
 
 function removeFruitAndVegsWithPlu(typedNumber) {
@@ -127,83 +153,94 @@ function removeFruitAndVegsWithPlu(typedNumber) {
   }
 }
 
-function removeUselessFruitAndVegs() {
-  fruitAndVegs = fruitAndVegs.filter(fruitAndVeg => {
-    return fruitAndVeg.x + fruitAndVeg.radius > 0;
-  });
-}
-
 function changeLevel(level) {
   if (level === 1) {
-    nbOfItems = 2
-    speed = 2
-  }
-  else if (level === 2) {
-    nbOfItems = 4
-    speed = 3
-  }
-  else {
-    nbOfItems = 6
-    speed = 4
+    nbOfItems = 2;
+    speed = 2;
+  } else if (level === 2) {
+    nbOfItems = 4;
+    speed = 3;
+  } else {
+    nbOfItems = 6;
+    speed = 4;
   }
 
-  $nbOfItems.innerText = nbOfItems
-  $speed.innerText = speed
+  $nbOfItems.innerText = nbOfItems;
+  $speed.innerText = speed;
 }
-changeLevel(1) // => To use by default level 1
+changeLevel(1); // => To use by default level 1
+
+function startGame() {
+  page = "play";
+  frame = 0; // The frame counter
+  player = new Player();
+  fruitAndVegs = [];
+  showInfo = false;
+  showInfoCounter = 0;
+}
 
 // Listen for key events
 window.onkeydown = e => {
-  if (player.typedNumber.length < 3 && "0" <= e.key && e.key <= "9") {
+  if (
+    !showInfo &&
+    player.typedNumber.length < 3 &&
+    "0" <= e.key &&
+    e.key <= "9"
+  ) {
     player.typedNumber += e.key;
   }
-  if (e.key === "Backspace") {
+  if (!showInfo && e.key === "Backspace") {
     player.typedNumber = player.typedNumber.substr(
       0,
       player.typedNumber.length - 1
     );
   }
-  if (e.key === "Enter") {
+  if (!showInfo && e.key === "Enter") {
     removeFruitAndVegsWithPlu(player.typedNumber);
     player.typedNumber = "";
+  }
+  if (e.key === "i" || e.key === " ") {
+    showInfo = !showInfo;
+    if (showInfo) showInfoCounter++;
   }
 };
 
 // Listen for button events (cd. INPUT MASK)
 document.querySelectorAll(".digits button").forEach($button => {
   $button.onclick = () => {
-    let content = $button.innerHTML;
-    console.log(content);
-    if (content === "Enter") {
-      removeFruitAndVegsWithPlu(player.typedNumber);
-      player.typedNumber = "";
-    } else if (content === "Back") {
-      player.typedNumber = player.typedNumber.substr(
-        0,
-        player.typedNumber.length - 1
-      );
-    } else {
-      player.typedNumber += content;
+    if (!showInfo) {
+      let content = $button.innerHTML;
+      console.log(content);
+      if (content === "Enter") {
+        removeFruitAndVegsWithPlu(player.typedNumber);
+        player.typedNumber = "";
+      } else if (content === "Back") {
+        player.typedNumber = player.typedNumber.substr(
+          0,
+          player.typedNumber.length - 1
+        );
+      } else {
+        player.typedNumber += content;
+      }
     }
   };
 });
 
+document.querySelector(".digits button.show-info").onclick = $button => {
+  showInfo = !showInfo;
+  if (showInfo) showInfoCounter++;
+};
+
 $canvas.onclick = () => {
   if (page === "home") {
     page = "instructions";
-  }
-  else if (page === "instructions") {
-    page = "play";
-  }
-  else if (player.score === -10) {
-    page = "game-over";
-  }
-  else if (page === "game-over") {
-    page = "play";
+  } else if (page === "instructions") {
+    startGame();
+  } else if (page === "game-over") {
+    startGame();
   }
 };
 
 $selectLevel.onchange = () => {
-  changeLevel(Number($selectLevel.value))
-}
-
+  changeLevel(Number($selectLevel.value));
+};
