@@ -15,11 +15,11 @@ let frame = 0; // The frame counter
 let player = new Player();
 let fruitAndVegs = [];
 let bg = new Background();
-let page = "home"; // Possible values: "home", "play", "instructions", "game-over"
+let page = "home"; // Possible values: "home", "play", "instructions", "game-over", "you-won"
 let showInfo = false;
 let showInfoCounter = 0;
-let nbOfItems; // could it be zero?
-let speed; // could it be zero?
+let nbOfItems; // The value will be added later
+let speed; // The value will be added later
 
 function animation() {
   updateEverything();
@@ -59,7 +59,7 @@ function drawEverything(ctx) {
 
 function drawHome(ctx) {
   ctx.save();
-  ctx.fillStyle = "rgb(229, 213, 202, 0.1)"; // color of the background of the canvas
+  ctx.fillStyle = "rgb(229, 213, 202, 0.5)"; // color of the background of the canvas HEX #e5d5ca
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   ctx.fillStyle = "#1b1727"; // color of the written
   ctx.textAlign = "center";
