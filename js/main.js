@@ -172,10 +172,10 @@ function updateEverything() {
       }
     }
   }
-  if (player.score <= -50) {
+  if (player.score <= -10) {
     page = "game-over"; // To define WHEN YOU LOSE
   }
-  if (player.score >= 6) {
+  if (player.score >= 30) {
     page = "you-won"; // To define WHEN YOU WIN
   }
 }
