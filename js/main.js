@@ -263,7 +263,7 @@ document.querySelectorAll(".digits button").forEach($button => {
       } else {
         player.typedNumber += content;
       }
-    }
+    } document.activeElement.blur(); // To remove the focus blue border/outline from input mask, added with Andre
   };
 });
 
@@ -286,4 +286,5 @@ $canvas.onclick = () => {
 
 $selectLevel.onchange = () => {
   changeLevel(Number($selectLevel.value));
+  document.activeElement.blur(); // To remove the focus blue border/outline from dropdown menu <select>, added with Andre
 };
