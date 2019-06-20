@@ -79,11 +79,12 @@ function drawInstructions(ctx) {
   ctx.font = "80px Permanent Marker";
   ctx.fillText("Instructions", CANVAS_WIDTH / 2, 100);
   ctx.font = "30px Roboto";
-  ctx.fillText("Lorem ipsum dolor sit amet consectetur adipisicing elit", CANVAS_WIDTH/2, 200, 900);
-  ctx.fillText("Ratione, expedita ad doloremque esse itaque", CANVAS_WIDTH/2, 250, 900);
-  ctx.fillText("reiciendis illum enim saepe commodi,", CANVAS_WIDTH/2, 300, 900);
-  ctx.fillText("similique totam quidem eos unde modi.", CANVAS_WIDTH/2, 350, 900);
-  ctx.fillText("Ut ad itaque totam veniam.", CANVAS_WIDTH/2, 400, 900);
+  ctx.fillText("Each variety of fruit and vegetable corresponds to a PLU code.", CANVAS_WIDTH/2, 200, 900);
+  ctx.fillText("Press <spacebar> or <i> to learn the corresponding PLU.", CANVAS_WIDTH/2, 250, 900);
+  ctx.fillText("Digit the right PLU code and press <enter> to submit,", CANVAS_WIDTH/2, 300, 900);
+  ctx.fillText("or press <back> to cancel.", CANVAS_WIDTH/2, 350, 900);
+  ctx.fillText("Improve the level to test your knowledge!", CANVAS_WIDTH/2, 400, 900);
+  ctx.fillText("Have fun!", CANVAS_WIDTH/2, 450, 900);
   ctx.font = "40px Permanent Marker";
   ctx.fillText("< Click to play >", CANVAS_WIDTH/2, 550, 900);
   ctx.restore();
