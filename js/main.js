@@ -81,10 +81,11 @@ function drawInstructions(ctx) {
   ctx.font = "30px Roboto";
   ctx.fillText("Each variety of fruit and vegetable corresponds to a PLU code.", CANVAS_WIDTH/2, 200, 900);
   ctx.fillText("Press <spacebar> or <i> to learn the corresponding PLU.", CANVAS_WIDTH/2, 250, 900);
-  ctx.fillText("Digit the right PLU code and press <enter> to submit,", CANVAS_WIDTH/2, 300, 900);
-  ctx.fillText("or press <back> to cancel.", CANVAS_WIDTH/2, 350, 900);
-  ctx.fillText("Improve the level to test your knowledge!", CANVAS_WIDTH/2, 400, 900);
-  ctx.fillText("Have fun!", CANVAS_WIDTH/2, 450, 900);
+  ctx.fillText("While displaying the PLU, you can not type your code:", CANVAS_WIDTH/2, 300, 900);  
+  ctx.fillText("press <spacebar> or <i> again.  Type the right PLU code and", CANVAS_WIDTH/2, 350, 900);
+  ctx.fillText("press <enter> to submit, or <back> to cancel.", CANVAS_WIDTH/2, 400, 900);
+  ctx.fillText("Increase the level to test your knowledge!", CANVAS_WIDTH/2, 450, 900);
+  ctx.fillText("Have fun!", CANVAS_WIDTH/2, 500, 900);
   ctx.font = "40px Permanent Marker";
   ctx.fillText("< Click to play >", CANVAS_WIDTH/2, 550, 900);
   ctx.restore();
@@ -128,12 +129,18 @@ function drawYouWon() {
   ctx.fillText("You won!", CANVAS_WIDTH / 2, 150);
   ctx.font = "50px Roboto";
   ctx.fillText(`Your score is ${player.score}.`, CANVAS_WIDTH / 2, 250);
-  // if showInfoCounter > 1  
-  ctx.fillText(`You asked for help ${showInfoCounter} times.`, CANVAS_WIDTH / 2, 350);
-  // if showInfoCounter === 0 
-  // ctx.fillText(`You never asked for help!!!`, CANVAS_WIDTH / 2, 350);
-  // if showInfoCounter === 1
-  // ctx.fillText(`You asked for help only once!`, CANVAS_WIDTH / 2, 350);
+
+  // Show different messages depending on how many times the player asks help
+  if (showInfoCounter > 1) {
+    ctx.fillText(`You asked for help ${showInfoCounter} times.`, CANVAS_WIDTH / 2, 350);
+  }
+  if (showInfoCounter === 0) {
+    ctx.fillText(`You never asked for help!!!`, CANVAS_WIDTH / 2, 350);
+  }
+  if (showInfoCounter === 1) {
+    ctx.fillText(`You only asked for help once!`, CANVAS_WIDTH / 2, 350);
+  }
+
   ctx.font = "50px Permanent Marker";
   ctx.fillText("< Click to play again >", CANVAS_WIDTH / 2, 450);
   ctx.restore();
@@ -186,14 +193,15 @@ function removeFruitAndVegsWithPlu(typedNumber) {
   }
 }
 
+// Set conditions of the levels: nr of items and speed
 function changeLevel(level) {
-  if (level === 1) {
+  if (level === 1) { // LEVEL 1
     nbOfItems = 8;
     speed = 2;
-  } else if (level === 2) {
+  } else if (level === 2) { // LEVEL 2
     nbOfItems = 16;
     speed = 3;
-  } else {
+  } else { // LEVEL 3
     nbOfItems = 24;
     speed = 4;
   }
