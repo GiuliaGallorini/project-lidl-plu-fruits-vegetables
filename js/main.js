@@ -165,7 +165,7 @@ function updateEverything() {
       }
     }
   }
-  if (player.score <= -5) {
+  if (player.score <= -50) {
     page = "game-over"; // To define WHEN YOU LOSE
   }
   if (player.score >= 6) {
@@ -188,13 +188,13 @@ function removeFruitAndVegsWithPlu(typedNumber) {
 
 function changeLevel(level) {
   if (level === 1) {
-    nbOfItems = 2;
+    nbOfItems = 8;
     speed = 2;
   } else if (level === 2) {
-    nbOfItems = 4;
+    nbOfItems = 16;
     speed = 3;
   } else {
-    nbOfItems = 6;
+    nbOfItems = 24;
     speed = 4;
   }
 
