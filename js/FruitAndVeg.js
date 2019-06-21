@@ -44,7 +44,6 @@ class FruitAndVeg {
       ctx.fillStyle = "white"
       ctx.fillText(this.item.missingPlu, this.x, this.y + 3)
     }
-
     ctx.restore(); // Restore the context state from the beginning
   }
   update() {

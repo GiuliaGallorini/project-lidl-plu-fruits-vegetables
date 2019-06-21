@@ -16,8 +16,6 @@ class Player {
     ctx.lineWidth = 3;
 
     // Draw the rectangle with typedNumber
-    // ctx.fillRect(this.x, this.y, this.w, this.h); // original rectangle
-    
     // Draw bigger rounded rectangle
     ctx.strokeStyle = "#465362"; // dark grey border line
     ctx.fillStyle = "#465362"; // dark grey border
@@ -32,7 +30,7 @@ class Player {
     ctx.fillStyle = "#C2EABD"; // tea green
     ctx.fillText(this.typedNumber, this.x + 80, this.y + 65);
 
-    // Score
+    // Draw the rectangle with score
     // Draw bigger rounded rectangle
     ctx.strokeStyle = "#ED254E"; // red border line
     ctx.fillStyle = "#ED254E"; // red border

@@ -26,13 +26,27 @@ canvas {
 
 h1 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 50px;
+    font-size: 20px;
     text-align: center;
     height: 50px;
     line-height: 50px;
     margin: 25px;
     color: #185222; /* Color of the main written */
 }
+
+@media (min-width: 400px) {
+    h1 {
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 800px) {
+    h1 {
+        font-size: 50px;
+    }
+}
+
+h1.responsive-div {} 
 
 /* Dropdown list + selected level */
 .level-control {
