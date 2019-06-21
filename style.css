@@ -11,12 +11,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0; 
-    background-color: yellow;
+    background-color: #fff250;
 }
 
 @media (min-width: 400px) {
     body {
-        background-color: yellowgreen;
+        background-color: #95b85f;
     }
 }
 
@@ -39,7 +39,7 @@ canvas {
 h1 {
     color: #185222; /* Color of the main written */
     font-family: 'Permanent Marker', cursive;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     height: 50px;
     line-height: 50px;
@@ -48,7 +48,7 @@ h1 {
 
 @media (min-width: 400px) {
     h1 {
-        font-size: 30px;
+        font-size: 40px;
     }
 }
 
