@@ -29,7 +29,8 @@ class FruitAndVeg {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.drawImage(this.item.image, this.x - this.radius, this.y -this.radius, 2*this.radius, 2*this.radius);
-    // ctx.fillText(this.item.emoji, this.x, this.y + 3); // Text disabled in order to display the image
+    // Text disabled in order to display the image
+    // ctx.fillText(this.item.emoji, this.x, this.y + 3);
     
     // When we have the value showInfo, draw the PLU 
     if (showInfo) {
@@ -44,7 +45,7 @@ class FruitAndVeg {
       ctx.fillText(this.item.missingPlu, this.x, this.y + 3)
     }
 
-    ctx.restore(); // Restore the context state from the begining
+    ctx.restore(); // Restore the context state from the beginning
   }
   update() {
     this.x -= speed;

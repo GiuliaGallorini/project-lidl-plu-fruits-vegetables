@@ -59,9 +59,9 @@ function drawEverything(ctx) {
 
 function drawHome(ctx) {
   ctx.save();
-  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
+  ctx.fillStyle = "rgb(255, 255, 255, 0.5)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "#fefafa"; // color of the written
+  ctx.fillStyle = "#185222"; // color of the written
   ctx.textAlign = "center";
   ctx.font = "80px Permanent Marker";
   ctx.fillText("PLU FRUITS & VEGS", CANVAS_WIDTH / 2, 250);
@@ -72,30 +72,35 @@ function drawHome(ctx) {
 
 function drawInstructions(ctx) {
   ctx.save();
-  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
+  ctx.fillStyle = "rgb(255, 255, 255, 0.5)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "#fefafa"; // color of the written
+  ctx.fillStyle = "#185222"; // color of the written
   ctx.textAlign = "center";
   ctx.font = "80px Permanent Marker";
   ctx.fillText("Instructions", CANVAS_WIDTH / 2, 100);
+  // Image of the apple of the instructions
+  var img = new Image();
+  img.src = "./images/items/fruits/apple-red.png";
+  ctx.drawImage(img, 250, 250, 150, 150);
+  // Text instructions
   ctx.font = "30px Roboto";
   ctx.fillText("Each variety of fruit and vegetable corresponds to a PLU code.", CANVAS_WIDTH/2, 200, 900);
-  ctx.fillText("Press <spacebar> or <i> to learn the corresponding PLU.", CANVAS_WIDTH/2, 250, 900);
-  ctx.fillText("While displaying the PLU, you can not type your code:", CANVAS_WIDTH/2, 300, 900);  
-  ctx.fillText("press <spacebar> or <i> again.  Type the right PLU code and", CANVAS_WIDTH/2, 350, 900);
-  ctx.fillText("press <enter> to submit, or <back> to cancel.", CANVAS_WIDTH/2, 400, 900);
-  ctx.fillText("Increase the level to test your knowledge!", CANVAS_WIDTH/2, 450, 900);
-  ctx.fillText("Have fun!", CANVAS_WIDTH/2, 500, 900);
+  ctx.fillText("Press <spacebar> to learn it!", 600, 250, 900);
+  ctx.font = "80px Permanent Marker";
+  ctx.fillText("-> 200", 600, 350, 900);
+  ctx.font = "30px Roboto";
+  ctx.fillText(" Type the right PLU code and press <enter> to submit it.", CANVAS_WIDTH/2, 450, 900);
   ctx.font = "40px Permanent Marker";
+  ctx.fillStyle = "#185222";
   ctx.fillText("< Click to play >", CANVAS_WIDTH/2, 550, 900);
   ctx.restore();
 }
 
 function drawGameOver(ctx) {
   ctx.save();
-  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
+  ctx.fillStyle = "rgb(255, 255, 255, 0.5)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "#fefafa";
+  ctx.fillStyle = "#185222";
   ctx.textAlign = "center";
   ctx.font = "100px Permanent Marker";
   ctx.fillText("Game over!", CANVAS_WIDTH / 2, 300);
@@ -104,41 +109,41 @@ function drawGameOver(ctx) {
   ctx.restore();
 }
 
-function drawInfo() {
-  ctx.save();
-  ctx.globalAlpha = 0.8;
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "white";
-  ctx.textAlign = "center";
-  ctx.font = "50px Arial";
-  ctx.fillText("Informations", CANVAS_WIDTH / 2, 100);
-  ctx.textAlign = "left";
-  ctx.fillText("Apple = 200", 50, 200);
-  ctx.fillText("Banana = 210", 50, 250);
-  ctx.restore();
-}
-
+// function drawInfo() {
+//   ctx.save();
+//   ctx.globalAlpha = 0.8;
+//   ctx.fillStyle = "black";
+//   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+//   ctx.fillStyle = "white";
+//   ctx.textAlign = "center";
+//   ctx.font = "50px Arial";
+//   ctx.fillText("Informations", CANVAS_WIDTH / 2, 100);
+//   ctx.textAlign = "left";
+//   ctx.fillText("Apple = 200", 50, 200);
+//   ctx.fillText("Banana = 210", 50, 250);
+//   ctx.restore();
+// }
+ 
 function drawYouWon() {
   ctx.save();
-  ctx.fillStyle = "rgb(24, 82, 34, 0.3)"; // color of the background of the canvas
+  ctx.fillStyle = "rgb(255, 255, 255, 0.5)"; // color of the background of the canvas
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#185222";
   ctx.textAlign = "center";
   ctx.font = "80px Permanent Marker";
   ctx.fillText("You won!", CANVAS_WIDTH / 2, 150);
-  ctx.font = "50px Roboto";
+  ctx.font = "40px Roboto";
   ctx.fillText(`Your score is ${player.score}.`, CANVAS_WIDTH / 2, 250);
 
   // Show different messages depending on how many times the player asks help
   if (showInfoCounter > 1) {
-    ctx.fillText(`You asked for help ${showInfoCounter} times.`, CANVAS_WIDTH / 2, 350);
+    ctx.fillText(`You asked for help ${showInfoCounter} times.`, CANVAS_WIDTH / 2, 300);
   }
   if (showInfoCounter === 0) {
-    ctx.fillText(`You never asked for help!!!`, CANVAS_WIDTH / 2, 350);
+    ctx.fillText(`You never asked for help!!!`, CANVAS_WIDTH / 2, 300);
   }
   if (showInfoCounter === 1) {
-    ctx.fillText(`You only asked for help once!`, CANVAS_WIDTH / 2, 350);
+    ctx.fillText(`You only asked for help once!`, CANVAS_WIDTH / 2, 300);
   }
 
   ctx.font = "50px Permanent Marker";
@@ -175,7 +180,7 @@ function updateEverything() {
   if (player.score <= -10) {
     page = "game-over"; // To define WHEN YOU LOSE
   }
-  if (player.score >= 30) {
+  if (player.score >= 20) {
     page = "you-won"; // To define WHEN YOU WIN
   }
 }

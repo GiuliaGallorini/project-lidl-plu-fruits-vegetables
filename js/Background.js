@@ -4,7 +4,7 @@ class Background {
   }
   draw(ctx) {
     ctx.save();
-    ctx.fillStyle = "rgb(241, 157, 169, 0.2)"; // color of the background of the canvas
+    ctx.fillStyle = "rgb(255, 255, 255, 0.5)"; // color of the background of the canvas
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     ctx.fillStyle = "rgb(40, 55, 71)";
     ctx.fillRect(0, 100, CANVAS_WIDTH, 100);
@@ -13,6 +13,7 @@ class Background {
     ctx.fillStyle = "rgb(52, 73, 94)";
     ctx.fillRect(0, 300, CANVAS_WIDTH, 100);
     ctx.strokeStyle = "#555";
+    // These are the moving lines drawn by Maxence
     // ctx.lineWidth = 3;
     // ctx.beginPath();
     // ctx.moveTo(this.x, 0);
