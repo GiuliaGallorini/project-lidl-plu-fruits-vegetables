@@ -90,9 +90,21 @@ h1 {
     width: 50px;
     border-radius: 12px;
     border: 1px solid #185222;
-
 }
 
 .digits button.show-info {
     width: 160px;
+    margin-top: 35px;
+}
+
+@media (min-width: 400px) {
+    .mobile-mask {
+        display: block;
+    }
+}
+
+@media (min-width: 800px) {
+    .mobile-mask {
+        display: none;
+    }
 }
