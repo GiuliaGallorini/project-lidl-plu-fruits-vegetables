@@ -11,8 +11,20 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0; 
-    background-image: url("./images/red-fruit-and-vegetables-on-a-white-background-2.jpg");
-    background-size: cover;
+    background-color: yellow;
+}
+
+@media (min-width: 400px) {
+    body {
+        background-color: yellow;
+    }
+}
+
+@media (min-width: 800px) {
+    body {
+        background-image: url("./images/red-fruit-and-vegetables-on-a-white-background-2.jpg");
+        background-size: cover;
+    }
 }
 
 canvas {
@@ -25,18 +37,18 @@ canvas {
 }
 
 h1 {
+    color: #185222; /* Color of the main written */
     font-family: 'Permanent Marker', cursive;
     font-size: 20px;
     text-align: center;
     height: 50px;
     line-height: 50px;
     margin: 25px;
-    color: #185222; /* Color of the main written */
 }
 
 @media (min-width: 400px) {
     h1 {
-        font-size: 40px;
+        font-size: 30px;
     }
 }
 
@@ -45,8 +57,6 @@ h1 {
         font-size: 50px;
     }
 }
-
-h1.responsive-div {} 
 
 /* Dropdown list + selected level */
 .level-control {
