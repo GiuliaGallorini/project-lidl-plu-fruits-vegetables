@@ -91,7 +91,8 @@ h1 {
     border-radius: 12px;
     border: 1px solid #185222;
     /* pointer-events: none; */
-    touch-action: none;
+    /* touch-action: none; OK */ 
+    /* or try manipulation  */
 }
 
 .digits button.show-info {
